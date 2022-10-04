@@ -1,0 +1,44 @@
+1. Generate seedPharse 
+ 	GET http://13.127.64.68:7003/api/wallet/seedPharse   
+
+
+2. Create or Import wallet by seedPharse 	
+    POST http://13.127.64.68:7003/api/wallet/generatePrivateKey 	
+        { 
+            "mnemonic": "loud call bottom coral good series time ancient spider round limit wood" 	
+        }  
+
+3. Import wallet  by private key 	
+    POST http://13.127.64.68:7003/api/wallet/importPrivateKey 	
+        { 
+            "private_key":"0x74736956eb016fc0b5d3cd2ae9e3cd17dfb7a1eedc2cfa1263fb3d93f8ded8d6" 
+        }
+
+4. GET http://13.127.64.68:7003/api/home/coinlist
+
+5. POST http://13.127.64.68:7003/api/home/getBalance
+        {
+	        "accounts" :"0x1b95bf142f8793eaa7083f710e42fdb8b66b6c01"
+        }
+
+
+6. POST http://13.127.64.68:7003/api/auth/signup
+        {
+	        "email" :"rrr1@gmail.com",
+	        "password" :"123456",
+            "user_name": "RRR"
+        }
+
+7. POST http://13.127.64.68:7003/api/auth/login
+        {
+        	"email" :"rrr1@gmail.com",
+        	"password" :"123456"
+        }
+
+8. POST http://13.127.64.68:7003/api/home/coingraph
+        {
+            "coin_id" :"bitcoin",
+            "days" :"0", // 1 or more then number for days if get max,then don't pass any number
+            "from": "1659093918", // from time in string if get max,then don't pass any number
+            "to": "1659093929" // to time in string if get max,then don't pass any number
+        }

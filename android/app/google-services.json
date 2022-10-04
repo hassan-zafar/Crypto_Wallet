@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1096189636403",
+    "project_id": "wuu-crypto-wallet",
+    "storage_bucket": "wuu-crypto-wallet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1096189636403:android:ca4a97e045c7491bd75846",
+        "android_client_info": {
+          "package_name": "com.hassan.wuu_crypto_wallet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1096189636403-idik76ave09b0d7um6ltdnvl1ojs278i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hassan.wuu_crypto_wallet",
+            "certificate_hash": "d3984de38e8552e8a961dbb0688d5693105fc273"
+          }
+        },
+        {
+          "client_id": "1096189636403-1e450366rna5of3jfbuiumiengpklthj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWq00189T2A81zQmY7TEkxVV5I7zpQRRw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1096189636403-1e450366rna5of3jfbuiumiengpklthj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
