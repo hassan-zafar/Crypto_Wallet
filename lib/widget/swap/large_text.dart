@@ -25,7 +25,7 @@ class LargeTextField extends StatelessWidget {
       onChanged: onChanged,
       controller: controller,
       style: const TextStyle(
-        fontSize: 22,
+        fontSize: 40,
         fontWeight: FontWeight.bold,
       ),
       textAlign: TextAlign.center,
@@ -33,18 +33,15 @@ class LargeTextField extends StatelessWidget {
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
       decoration: InputDecoration(
         prefixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
-        prefix: prefix,contentPadding: EdgeInsets.all(32),
+        prefix: prefix,
         suffix: InkWell(
           onTap: suffixTap,
-          child: const Text(
-            'Max',
-          ),
+          child: const Text('Max',),
         ),
         suffixStyle: const TextStyle(fontSize: 20),
         border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(20))
-            // borderSide: BorderSide.none,
-            ),
+          borderSide: BorderSide.none,
+        ),
       ),
     );
   }

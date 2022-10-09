@@ -18,6 +18,7 @@ class AuthMethods {
 
   static String get uid => _auth.currentUser?.uid ?? '';
 
+
   static String get uniqueID => uid + TimeDateFunctions.timestamp.toString();
 
   Future<User?> signupWithEmailAndPassword({
@@ -36,13 +37,12 @@ class AuthMethods {
       final User? user = result.user;
       assert(user != null);
       await UserAPI().addUser(
-        AppUserModel(
+        AppUser(
           uid: user!.uid,
           name: '',
           email: email,
           username: '',
           imageURL: '',
-          seedPhrase: '',
         ),
       );
 
@@ -51,23 +51,6 @@ class AuthMethods {
       CustomToast.errorToast(message: signUpError.toString());
       return null;
     }
-  }
-
-  Future<AppUserModel> fetchUserInfoFromFirebase({
-    required String uid,
-  }) async {
-    final DocumentSnapshot _user = await userRef.doc(uid).get();
-    currentUser = AppUserModel.fromDoc(_user);
-    return currentUser!;
-  }
-
-  Future<bool> fetchWalletInfoFromFirebase({
-    required String seedPhrase,
-  }) async {
-    final DocumentSnapshot walletSnapshot =
-        await walletRef.doc(seedPhrase).get();
-    walletAddMap = walletSnapshot.data()! as Map<String, dynamic>;
-    return walletSnapshot.exists;
   }
 
   Future<User?> loginWithEmailAndPassword({
@@ -84,11 +67,11 @@ class AuthMethods {
         CustomToast.errorToast(message: obj.toString());
       });
       final User? user = result.user;
-      final AppUserModel? appUser = await UserAPI().getInfo(uid: user!.uid);
+      final AppUser? appUser = await UserAPI().getInfo(uid: user!.uid);
       UserLocalData().storeAppUserData(appUser: appUser!);
-      // await walletRef.doc(user.uid).get().then((doc) {
-      //   walletAddMap = doc.data() as Map<String, dynamic>;
-      // });
+      await walletRef.doc(user.uid).get().then((doc) {
+        walletAddMap = doc.data() as Map<String, dynamic>;
+      });
       return user;
     } catch (signUpError) {
       CustomToast.errorToast(message: signUpError.toString());

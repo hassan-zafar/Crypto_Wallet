@@ -1,16 +1,18 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:bip39/bip39.dart' as bip39;
+import 'package:english_words/english_words.dart' as words;
+
 import '../apis/wallet_api.dart';
 import '../models/seed_phrase.dart';
 
 class SeedPhraseProvider extends ChangeNotifier {
   init() async {
-    _phrases = bip39.generateMnemonic();
-    print(_phrases!);
-    _phrasesList.addAll(_phrases!.split(' '));
+    // _phrases = await WalletAPI().getSeedPhrase();
+    // print(_phrases!.mnemonic);
+    // _phrasesList.addAll(_phrases!.mnemonic.split(' '));
+    // print(_phrasesList);
     //TODO: make it random
-  
+    _phrasesList = words.all;
     print(_phrasesList);
     Random random = Random();
     _firstIndex = random.nextInt(12);
@@ -28,7 +30,7 @@ class SeedPhraseProvider extends ChangeNotifier {
     );
   }
 
-  String? _phrases;
+  // SeedPhrase? _phrases;
   List<String> _phrasesList = <String>[];
   late int _firstIndex;
   late int _secondIndex;

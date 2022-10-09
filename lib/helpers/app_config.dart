@@ -1,6 +1,5 @@
 
 import 'package:wuu_crypto_wallet/helpers/strings.dart';
-import 'package:wuu_crypto_wallet/models/app_user.dart';
 
 import '../models/coin_market_place/coin.dart';
 
@@ -30,7 +29,6 @@ const String MEDIUM_URL = 'https://medium.com/';
 
 const int DISABLE_END = 14;
 
-AppUserModel? currentUser;
 Map<String, dynamic> walletAddMap = {};
 var totalBalance;
 

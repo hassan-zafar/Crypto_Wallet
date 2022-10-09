@@ -28,7 +28,7 @@ class TrnsText extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Text(
-      title,
+      extra1 + extra2,
       style: style,
       textAlign: textAlign,
       overflow: overflow,

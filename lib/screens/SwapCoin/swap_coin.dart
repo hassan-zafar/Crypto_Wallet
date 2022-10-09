@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:wuu_crypto_wallet/widget/custom_widgets/custom_elevated_button.dart';
 
 import '../../backend/all_backends.dart';
 import '../../helpers/app_config.dart';
@@ -149,7 +148,11 @@ class _SwapScreenState extends State<SwapScreen> {
                 ],
               ),
             ),
-            CustomElevatedButton(title: 'Swap', onTap: swapFxn),
+            CustButton(
+              onTap: swapFxn,
+              title: 'Swap {Arg}',
+              args: const {'Arg': ''},
+            )
           ],
         ),
       ),

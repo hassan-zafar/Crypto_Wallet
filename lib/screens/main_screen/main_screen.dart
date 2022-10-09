@@ -1,19 +1,27 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wuu_crypto_wallet/screens/main_pages/exchange_coin_screen.dart';
 
+import '../../backend/all_backends.dart';
 import '../../backend/encrypt.dart';
+import '../../backend/erc_20_wallet.dart';
+import '../../backend/wallet_addresses.dart';
 import '../../constants/collections.dart';
 import '../../database/auth_methods.dart';
+import '../../database/user_local_data.dart';
 import '../../helpers/app_config.dart';
+import '../../helpers/strings.dart';
 import '../../providers/app_provider.dart';
 import '../../providers/exchange_provider.dart';
 import '../SwapCoin/swap_coin.dart';
+import '../main_pages/exchange_coin_screen.dart';
 import '../main_pages/history_page.dart';
 import '../main_pages/home_page.dart';
 import '../main_pages/profile_page.dart';
 import '../main_pages/coin_balace_page.dart';
+import '../wallet_screens/create_wallet_screen/create_wallet_screen.dart';
 import 'main_bottom_navigation_bar.dart';
+import 'package:http/http.dart' as http;
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -37,7 +45,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-    // getWallet();
+    getWallet();
   }
 
   bool isLoading = false;
@@ -50,14 +58,8 @@ class _MainScreenState extends State<MainScreen> {
     print('in create wallet');
     // try {
     print(AuthMethods.getCurrentUser!.uid);
-    var value=await walletRef.doc(AuthMethods.getCurrentUser!.uid).get();
-    print(value.exists);
-      print(value.data());
-      walletAddMap = value.data()!;
-      print('walletAddMap $walletAddMap');
-      String asd = _encryptApp.appDecrypt(walletAddMap['doge_wallet_id']);
-      print(asd);
-      print(_encryptApp.appDecrypt(walletAddMap['doge_address']));
+    var asd=await walletRef.doc(AuthMethods.getCurrentUser!.uid).get();
+    print(asd.exists);
     // .then((DocumentSnapshot<Map<String, dynamic>>value) {
 
     // });

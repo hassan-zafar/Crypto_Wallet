@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:wuu_crypto_wallet/Utilities/Utilities.dart';
 
 class CustContainer extends StatelessWidget {
   const CustContainer({
@@ -15,15 +14,14 @@ class CustContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-            height:height ?? 100,
-      width: width ??double.infinity,
-      padding: const EdgeInsets.all(16),
-      margin: const EdgeInsets.symmetric(vertical: 10),
+      height: height ?? 100,
+      width: width ?? double.infinity,
+      padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        gradient: LinearGradient(colors: Utilities.bproGradient),
+        color: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(),
       ),
-    
       child: child,
     );
   }

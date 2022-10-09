@@ -31,13 +31,17 @@ class KHeader extends StatelessWidget {
       isLoading: isLoading,
       progressIndicator: const CustProgIndicator(),
       child: WillPopScope(
-        onWillPop: null,
+        onWillPop:  null,
         child: Scaffold(
           floatingActionButton: floatingActionButton,
           appBar: title != null
               ? AppBar(
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
                   title: Text(
-                    'Swap Coins',
+                    extra1 +
+                        // _allBackEnds.multiTranslation(context, title!,
+                        //     args: args)! +
+                        extra2,
                   ),
                 )
               : null,

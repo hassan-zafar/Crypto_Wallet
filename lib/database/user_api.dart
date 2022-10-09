@@ -9,26 +9,26 @@ class UserAPI {
   static const String _collection = 'users';
   static final FirebaseFirestore _instance = FirebaseFirestore.instance;
   // functions
-  Future<List<AppUserModel>> getAllUsers() async {
-    final List<AppUserModel> appUser = <AppUserModel>[];
+  Future<List<AppUser>> getAllUsers() async {
+    final List<AppUser> appUser = <AppUser>[];
     final QuerySnapshot<Map<String, dynamic>> doc =
         await _instance.collection(_collection).get();
 
     for (DocumentSnapshot<Map<String, dynamic>> element in doc.docs) {
-      appUser.add(AppUserModel.fromDoc(element));
+      appUser.add(AppUser.fromDoc(element));
     }
     return appUser;
   }
 
   // functions
-  Future<AppUserModel?>? getInfo({required String uid}) async {
+  Future<AppUser?>? getInfo({required String uid}) async {
     final DocumentSnapshot<Map<String, dynamic>> doc =
         await _instance.collection(_collection).doc(uid).get();
     if (doc.data() == null) return null;
-    return AppUserModel.fromDoc(doc);
+    return AppUser.fromDoc(doc);
   }
 
-  Future<bool> addUser(AppUserModel appUser) async {
+  Future<bool> addUser(AppUser appUser) async {
     try {
       await userRef
           .doc(appUser.uid)
@@ -47,14 +47,14 @@ class UserAPI {
     return url;
   }
 
-  Future<List<AppUserModel>> getAllfirebaseusersbyName(String name) async {
-    List<AppUserModel> users = <AppUserModel>[];
+  Future<List<AppUser>> getAllfirebaseusersbyName(String name) async {
+    List<AppUser> users = <AppUser>[];
     QuerySnapshot<Map<String, dynamic>> snapshot =
         await FirebaseFirestore.instance.collection(_collection).get();
 
     List<DocumentSnapshot<Map<String, dynamic>>> docs = snapshot.docs;
     for (DocumentSnapshot<Map<String, dynamic>> doc in docs) {
-      AppUserModel appUser = AppUserModel.fromDoc(doc);
+      AppUser appUser = AppUser.fromDoc(doc);
       if (appUser.name.contains(name)) {
         users.add(appUser);
       }
