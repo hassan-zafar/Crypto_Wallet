@@ -1,5 +1,3 @@
-
-
 import 'package:wuu_crypto_wallet/backend/erc_20_wallet.dart';
 import 'package:wuu_crypto_wallet/backend/wallet_addresses.dart';
 import 'package:wuu_crypto_wallet/constants/collections.dart';
@@ -36,6 +34,9 @@ class WalletAPI {
     walletAddMap = await _walletAd.createWallet();
     Map<String, dynamic> erc20Add = await _erc20walletAd.createErcWallet();
     walletAddMap.addAll(erc20Add);
+    walletAddMap['seedPhrase'] = phrase;
+
+    await userRef.doc(currentUser!.uid).update({'seedPhrase': phrase});
     await walletRef.doc(phrase).set(walletAddMap);
     return true;
   }

@@ -5,7 +5,7 @@ import '../custom_widgets/circular_profile_image.dart';
 
 class UserProfileInfoCard extends StatelessWidget {
   const UserProfileInfoCard({required this.user, Key? key}) : super(key: key);
-  final AppUser user;
+  final AppUserModel user;
 
   @override
   Widget build(BuildContext context) {

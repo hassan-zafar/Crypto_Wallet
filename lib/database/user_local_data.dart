@@ -43,7 +43,7 @@ class UserLocalData {
   static String get getImageURL => _preferences!.getString(_imageURLKey) ?? '';
   static String get getEmail => _preferences!.getString(_emailKey) ?? '';
 
-  void storeAppUserData({required AppUser appUser}) {
+  void storeAppUserData({required AppUserModel appUser}) {
     setUID(appUser.uid);
     setDisplayName(appUser.name );
     setUsername(appUser.username);
@@ -51,13 +51,13 @@ class UserLocalData {
     setEmail(appUser.email);
   }
 
-  AppUser get user {
-    return AppUser(
+  AppUserModel get user {
+    return AppUserModel(
       uid: AuthMethods.uid,
       name: getDisplayName,
       username: getUsername,
       imageURL: getImageURL,
-      email: getEmail,
+      email: getEmail, seedPhrase: '',
     );
   }
 }
